@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Nora's Collection</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .font-display {
+            font-family: 'Playfair Display', serif;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+        .delay-500 { animation-delay: 0.5s; }
+        .delay-600 { animation-delay: 0.6s; }
+
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+        }
+
+        .mobile-menu.active {
+            max-height: 500px;
+            animation: slideDown 0.4s ease-out;
+        }
+
+        .btn-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-hover::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn-hover:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-hover:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(139, 92, 246, 0.4);
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            width: 65px;
+            height: 65px;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #25d366 0%, #128C7E 100%);
+            color: #FFF;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 32px;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.15);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
+            animation: none;
+        }
+
+        .value-card {
+            transition: all 0.4s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .story-gradient {
+            background: linear-gradient(135deg, #fdf4ff 0%, #f5e6ff 50%, #e9d5ff 100%);
+        }
+
+        .icon-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .quote-mark {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            line-height: 1;
+            opacity: 0.2;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0">
+                    <a href="index.html">
+                        <h1 class="text-3xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
+                            ✨ Nora's Collection
+                        </h1>
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html" class="text-gray-800 hover:text-purple-600 px-3 py-2 font-medium transition-all duration-300 relative group">
+                            🏠 Home
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-600 group-hover:w-full transition-all duration-300"></span>
+                        </a>
+                        <a href="about.html" class="text-purple-600 px-3 py-2 font-medium transition-all duration-300 relative group">
+                            💫 About
+                            <span class="absolute bottom-0 left-0 w-full h-0.5 bg-purple-600"></span>
+                        </a>
+                        <a href="products.html" class="text-gray-800 hover:text-purple-600 px-3 py-2 font-medium transition-all duration-300 relative group">
+                            🛍️ Products
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-600 group-hover:w-full transition-all duration-300"></span>
+                        </a>
+                        <a href="contact.html" class="text-gray-800 hover:text-purple-600 px-3 py-2 font-medium transition-all duration-300 relative group">
+                            📞 Contact
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-600 group-hover:w-full transition-all duration-300"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-800 hover:text-purple-600 focus:outline-none transition-all">
+                        <svg id="menu-icon" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <svg id="close-icon" class="h-7 w-7 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="mobile-menu md:hidden bg-white border-t border-gray-100">
+            <div class="px-4 pt-4 pb-6 space-y-3">
+                <a href="index.html" class="block text-gray-800 hover:text-purple-600 hover:bg-purple-50 px-4 py-3 rounded-lg font-medium transition-all">
+                    🏠 Home
+                </a>
+                <a href="about.html" class="block text-purple-600 bg-purple-50 px-4 py-3 rounded-lg font-medium transition-all">
+                    💫 About
+                </a>
+                <a href="products.html" class="block text-gray-800 hover:text-purple-600 hover:bg-purple-50 px-4 py-3 rounded-lg font-medium transition-all">
+                    🛍️ Products
+                </a>
+                <a href="contact.html" class="block text-gray-800 hover:text-purple-600 hover:bg-purple-50 px-4 py-3 rounded-lg font-medium transition-all">
+                    📞 Contact
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="story-gradient py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="icon-float text-6xl mb-6">💎</div>
+            <h1 class="text-5xl md:text-6xl font-display font-bold text-gray-900 mb-6 fade-in">Our Story</h1>
+            <p class="text-xl text-purple-700 max-w-2xl mx-auto fade-in delay-100">
+                Where elegance meets passion, and your beauty becomes our mission
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Story Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="relative">
+                <div class="quote-mark text-purple-300 absolute -top-8 -left-4">"</div>
+                <div class="fade-in">
+                    <p class="text-lg md:text-xl text-gray-700 leading-relaxed mb-6">
+                        At <span class="font-semibold text-purple-600">Nora's Collection</span>, we believe that fashion is more than just clothing—it's a statement, a feeling, and a reflection of who you are. Born from a passion for helping people discover their unique style, we've curated a collection that speaks to the heart of modern elegance.
+                    </p>
+                </div>
+                
+                <div class="fade-in delay-100">
+                    <p class="text-lg md:text-xl text-gray-700 leading-relaxed mb-6">
+                        Every piece in our collection tells a story. From the sophisticated businessman looking for that perfect shirt to the confident woman searching for shoes that make her feel unstoppable, we understand that the right outfit can transform not just your appearance, but your entire day.
+                    </p>
+                </div>
+
+                <div class="fade-in delay-200">
+                    <p class="text-lg md:text-xl text-gray-700 leading-relaxed mb-6">
+                        We've built our reputation on three pillars: <span class="font-semibold text-purple-600">quality</span>, <span class="font-semibold text-purple-600">variety</span>, and <span class="font-semibold text-purple-600">authenticity</span>. Whether you're shopping for premium men's wear, elegant women's fashion, luxury handbags, or natural-looking wigs, we ensure every item meets our high standards. Because when you look good, we've done our job right.
+                </p>
+                </div>
+                <div class="quote-mark text-purple-300 absolute -bottom-8 right-0 transform rotate-180">"</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Values Section -->
+    <section class="py-20 bg-gradient-to-b from-purple-50 to-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl md:text-5xl font-display font-bold text-center text-gray-900 mb-16">
+                What Sets Us Apart ✨
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="values-grid">
+                <!-- Values will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Statement -->
+    <section class="py-20 bg-gradient-to-br from-purple-600 to-pink-600 text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="fade-in">
+                <h2 class="text-4xl md:text-5xl font-display font-bold mb-8">
+                    Your Look is Our Pride
+                </h2>
+                <p class="text-xl md:text-2xl leading-relaxed mb-12">
+                    This isn't just our tagline—it's our promise. Every time you step out wearing something from Nora's Collection, you carry a piece of our dedication to excellence. Your confidence is our greatest reward, and your satisfaction drives everything we do.
+                </p>
+                <div class="text-6xl mb-6">👑</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl md:text-5xl font-display font-bold text-center text-gray-900 mb-16">
+                Why Shop With Us? 🎯
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="fade-in delay-100">
+                    <div class="flex items-start gap-4">
+                        <div class="text-5xl flex-shrink-0">🌟</div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-3">Premium Quality</h3>
+                            <p class="text-gray-600 text-lg">
+                                We handpick every item to ensure you receive only the finest quality products that stand the test of time.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fade-in delay-200">
+                    <div class="flex items-start gap-4">
+                        <div class="text-5xl flex-shrink-0">🎨</div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-3">Diverse Selection</h3>
+                            <p class="text-gray-600 text-lg">
+                                From casual to formal, traditional to trendy—our collection caters to every style, occasion, and personality.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fade-in delay-300">
+                    <div class="flex items-start gap-4">
+                        <div class="text-5xl flex-shrink-0">💬</div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-3">Personalized Service</h3>
+                            <p class="text-gray-600 text-lg">
+                                Have questions? Need styling advice? We're just a message away, ready to help you find exactly what you need.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fade-in delay-400">
+                    <div class="flex items-start gap-4">
+                        <div class="text-5xl flex-shrink-0">⚡</div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-3">Easy Ordering</h3>
+                            <p class="text-gray-600 text-lg">
+                                Browse, choose, and order directly through WhatsApp. Shopping for style has never been this simple.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 story-gradient">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="fade-in">
+                <h2 class="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-6">
+                    Ready to Discover Your Style?
+                </h2>
+                <p class="text-xl text-gray-700 mb-10">
+                    Join hundreds of satisfied customers who have found their perfect look with Nora's Collection.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-5 justify-center">
+                    <a href="products.html" class="btn-hover bg-gradient-to-r from-purple-600 to-pink-600 text-white px-10 py-4 rounded-full font-semibold text-lg inline-block shadow-lg">
+                        🛍️ View Our Collection
+                    </a>
+                    <a href="contact.html" class="btn-hover bg-white text-purple-600 border-2 border-purple-600 px-10 py-4 rounded-full font-semibold text-lg inline-block shadow-lg">
+                        💬 Get in Touch
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+                <div>
+                    <h4 class="text-2xl font-display font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-pink-300">
+                        ✨ Nora's Collection
+                    </h4>
+                    <p class="text-purple-200 text-lg font-medium">Your Look is Our Pride</p>
+                </div>
+                <div>
+                    <h4 class="text-xl font-semibold mb-6 text-purple-300">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-gray-300 hover:text-purple-300 transition-colors flex items-center gap-2">🏠 Home</a></li>
+                        <li><a href="about.html" class="text-gray-300 hover:text-purple-300 transition-colors flex items-center gap-2">💫 About</a></li>
+                        <li><a href="products.html" class="text-gray-300 hover:text-purple-300 transition-colors flex items-center gap-2">🛍️ Products</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-purple-300 transition-colors flex items-center gap-2">📞 Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-semibold mb-6 text-purple-300">Contact Us</h4>
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex items-center gap-2">📱 WhatsApp: 09052854540</li>
+                        <li class="flex items-center gap-2">📧 emekwenora80@gmail.com</li>
+                        <li class="flex items-center gap-2">👤 Facebook: Nora Emekwe</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-purple-800 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 Nora's Collection. All rights reserved. Made with 💜</p>
+            </div>
+        </div>
+    </footer>
+
+   
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/2349052854540" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+        </svg>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html>
